@@ -8,10 +8,10 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import NotFound from './NotFound';
-import AddProductForm from './components/addProductForm';
-import AddProduct from './pages/addProduct';
+import AddProductForm from './components/AddProductForm';
+import AddProduct from './pages/AddProduct';
 import { useEffect } from 'react';
-import Login from "./pages/login";
+import Login from "./pages/Login";
 
 import useFetch from './hooks/useFetch';
 import { useLocation } from "react-router-dom";
