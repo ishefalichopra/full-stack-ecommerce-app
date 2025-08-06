@@ -1,0 +1,69 @@
+/* Contact.css */
+.contact-wrapper {
+  padding: 6rem 2rem;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+}
+
+.contact-form {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: left;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background-color: #007acc;
+  color: white;
+  padding: 0.9rem 1.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #005fa3;
+}
+
+.success-message {
+  color: #28a745;
+  font-weight: 600;
+  background: #eafaf1;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #28a745;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-error {
+  color: #d9534f;
+  margin: -0.8rem 0 1rem 0;
+  font-size: 0.9rem;
+}
+
