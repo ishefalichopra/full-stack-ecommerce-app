@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import API_BASE from '../apiConfig';
 
 function useFetch(endpoint) {
   const [data, setData] = useState([]);
@@ -17,7 +16,7 @@ function useFetch(endpoint) {
       setError(null);
 
       try {
-        const res = await fetch(`${API_BASE_URL}${endpoint}`, {
+        const res = await fetch(`${API_BASE}${endpoint}`, {
           credentials: 'include', // optional: if your backend uses cookies
         });
         if (!res.ok) throw new Error(`Error: ${res.status}`);

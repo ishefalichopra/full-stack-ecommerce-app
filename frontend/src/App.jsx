@@ -9,7 +9,7 @@ import Home from './components/Home';
 import About from './components/About';
 import Contact from './components/Contact';
 import NotFound from './NotFound';
-import AddProductForm from './components/AddProductForm';
+import AddProductForm from './components/addProductForm';
 import AddProduct from './pages/AddProduct';
 import { useEffect } from 'react';
 import Login from "./pages/Login";
