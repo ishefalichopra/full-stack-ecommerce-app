@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import API_BASE from './apiConfig';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,7 +20,7 @@ import './App.css';
 
 function App() {
   const { data: products = [], loading, error } = useFetch(
-    'http://localhost:5000/api/products'
+    `${API_BASE}/api/products`
   );
   const [searchTerm, setSearchTerm] = useState('');
   const [cartItems, setCartItems] = useState([]);
@@ -48,7 +49,7 @@ function App() {
     const token = localStorage.getItem("token");
 
     try {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+      const res = await fetch(`${API_BASE}/api/products/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import API_BASE from '../apiConfig';
 
 const AddProductForm = ({ onProductAdded }) => {
   const [formData, setFormData] = useState({
@@ -35,10 +36,10 @@ const AddProductForm = ({ onProductAdded }) => {
 
       const data = await res.json();
       if (res.ok) {
-        alert('✅ Product added!');
-        onProductAdded?.(data); // optional refresh
+        alert('Product added!');
+        onProductAdded?.(data);
       } else {
-        alert('❌ Failed to add product');
+        alert('Failed to add product');
       }
     } catch (error) {
       console.error('Error:', error);

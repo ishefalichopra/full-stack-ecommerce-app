@@ -26,7 +26,7 @@ const AddProduct = () => {
 
     try {
       const token = localStorage.getItem("token"); 
-      await axios.post('http://localhost:5000/api/products', payload, {
+      await axios.post(`${API_BASE}/api/products`, payload, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

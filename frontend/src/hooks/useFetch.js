@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 
-function useFetch(url) {
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+function useFetch(endpoint) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!url) return;
+    if (!endpoint) return;
 
     let isCancelled = false;
 
@@ -15,14 +17,15 @@ function useFetch(url) {
       setError(null);
 
       try {
-        const res = await fetch(url);
+        const res = await fetch(`${API_BASE_URL}${endpoint}`, {
+          credentials: 'include', // optional: if your backend uses cookies
+        });
         if (!res.ok) throw new Error(`Error: ${res.status}`);
         const result = await res.json();
 
-  
         const formatted = result.map(product => ({
           ...product,
-          id: product._id || product.id
+          id: product._id || product.id,
         }));
 
         if (!isCancelled) setData(formatted);
@@ -38,10 +41,9 @@ function useFetch(url) {
     return () => {
       isCancelled = true;
     };
-  }, [url]);
+  }, [endpoint]);
 
   return { data, loading, error };
 }
-
 
 export default useFetch;

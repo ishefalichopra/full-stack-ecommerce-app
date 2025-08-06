@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import API_BASE from "../apiConfig";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ function Login() {
       console.log("Sending login request with:", trimmedEmail, trimmedPassword);
 
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${API_BASE}/api/auth/login`,
         { email: trimmedEmail, password: trimmedPassword },
         { headers: { "Content-Type": "application/json" } }
       );
