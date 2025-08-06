@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "axois": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "vite-plugin-checker": "^0.10.2"
   }
 }
