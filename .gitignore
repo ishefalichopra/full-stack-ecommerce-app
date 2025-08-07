@@ -57,7 +57,6 @@ bower_components/
 .svelte-kit/
 # Gatsby files
 .cache/
-public
 # VuePress build output
 .vuepress/dist/
 # Docusaurus cache and output
