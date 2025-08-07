@@ -8,20 +8,25 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://full-stack-ecommerce-9b0zjm3ix-shefali-chopras-projects.vercel.app'
+  'https://full-stack-ecommerce-shefali-chopras-projects.vercel.app'
 ];
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin) return callback(null, true);
+
+    if (
+      allowedOrigins.includes(origin) ||
+      /^https:\/\/full-stack-ecommerce-[\w-]+\.vercel\.app$/.test(origin)
+    ) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
     }
   },
-  credentials: true,
+  credentials: true
 };
+
 
 app.use(cors(corsOptions));
 app.use(express.json());
