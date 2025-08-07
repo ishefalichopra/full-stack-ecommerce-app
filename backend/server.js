@@ -12,23 +12,16 @@ const allowedOrigins = [
 ];
 
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-
-    if (
-      allowedOrigins.includes(origin) || 
-      /^https:\/\/full-stack-ecommerce-[\w-]+\.vercel\.app$/.test(origin)
-    ) {
-      callback(null, true);
-    } else {
-      console.log('Blocked by CORS:', origin); 
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  optionsSuccessStatus: 200 
+  origin: [
+    'https://full-stack-ecommerce-adh9vaclj-shefali-chopras-projects.vercel.app',
+    'http://localhost:5173'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 };
 
+app.options('*', cors(corsOptions)); 
 app.use(cors(corsOptions));
 app.use(express.json());
 
