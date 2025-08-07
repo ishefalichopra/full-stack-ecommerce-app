@@ -11,9 +11,19 @@ const allowedOrigins = [
   'https://full-stack-ecommerce-9b0zjm3ix-shefali-chopras-projects.vercel.app'
 ];
 
-app.use(cors({
-  origin: "*"
-}));
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res) => {
