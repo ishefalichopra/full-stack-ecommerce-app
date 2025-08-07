@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   'http://localhost:5173',
-  'https://backend-wmc3.onrender.com'
+  'https://full-stack-ecommerce-9b0zjm3ix-shefali-chopras-projects.vercel.app'
 ];
 
 app.use(cors({
