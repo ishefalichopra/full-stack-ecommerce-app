@@ -12,16 +12,25 @@ const allowedOrigins = [
 ];
 
 const corsOptions = {
-  origin: [
-    'https://full-stack-ecommerce-adh9vaclj-shefali-chopras-projects.vercel.app',
-    'http://localhost:5173'
-  ],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:5173',
+      'https://full-stack-ecommerce-shefali-chopras-projects.vercel.app' // Production Vercel domain
+    ];
+
+    // Allow all Vercel preview deployments dynamically
+    if (!origin || allowedOrigins.includes(origin) || origin?.includes('.vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
 
-app.options('*', cors(corsOptions)); 
+app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
 app.use(express.json());
 
