@@ -16,9 +16,13 @@ function useFetch(endpoint) {
       setError(null);
 
       try {
-        const res = await fetch(`${API_BASE}${endpoint}`, {
-          credentials: 'include', // optional: if your backend uses cookies
+        const url = endpoint.startsWith('http') ? endpoint : `${API_BASE}${endpoint}`;
+        console.log("Fetching from:", url); 
+
+        const res = await fetch(url, {
+          credentials: 'include',
         });
+
         if (!res.ok) throw new Error(`Error: ${res.status}`);
         const result = await res.json();
 
